@@ -1,0 +1,13 @@
+services:
+  - type: cron
+    name: gmail-gpt-summary
+    runtime: python
+    plan: free
+    schedule: daily at 8:00AM
+    buildCommand: pip install -r requirements.txt
+    startCommand: python gmail_gpt_summary.py
+    envVars:
+      - key: OPENAI_API_KEY
+        sync: false
+      - key: GMAIL_APP_PASSWORD
+        sync: false
